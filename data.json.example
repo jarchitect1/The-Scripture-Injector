@@ -1,0 +1,7 @@
+{
+  "defaultTranslation": "ESV",
+  "esvApiKey": "YOUR_ESV_API_KEY_HERE",
+  "showTranslationName": true,
+  "showReference": true,
+  "verseCollapse": false
+}

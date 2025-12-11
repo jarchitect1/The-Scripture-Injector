@@ -1,0 +1,39 @@
+{
+  "name": "the-scripture-injector",
+  "version": "1.0.0",
+  "description": "Seamlessly integrate Bible verses into your notes with support for multiple translations.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production",
+    "build:analyze": "node esbuild.config.mjs production && echo \"Bundle size analysis:\" && ls -lh main.js",
+    "build:clean": "rimraf main.js && npm run build",
+    "build:prod": "npm run build:clean && npm run build:analyze",
+    "build:verify": "npm run build && node scripts/verify-build.js",
+    "build:release": "npm run build:clean && npm run build && node scripts/verify-build.js"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "bible",
+    "scripture",
+    "esv",
+    "net"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
+    "@typescript-eslint/parser": "5.29.0",
+    "builtin-modules": "3.3.0",
+    "esbuild": "^0.27.1",
+    "obsidian": "latest",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
