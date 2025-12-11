@@ -1,5 +1,6 @@
 import { BibleAPIService } from './bible-api';
 import { BibleVerse } from '../types/bible';
+import { requestUrl } from 'obsidian';
 
 export class NETBibleAPIService extends BibleAPIService {
 	private baseUrl = 'https://labs.bible.org/api/?';
@@ -8,13 +9,16 @@ export class NETBibleAPIService extends BibleAPIService {
 		try {
 			const url = `${this.baseUrl}passage=${encodeURIComponent(reference)}&formatting=para`;
 			
-			const response = await fetch(url);
+			const response = await requestUrl({
+				url: url,
+				method: 'GET'
+			});
 			
-			if (!response.ok) {
-				throw new Error(`NET Bible API error: ${response.statusText}`);
+			if (response.status !== 200) {
+				throw new Error(`NET Bible API error: ${response.status}`);
 			}
 
-			const text = await response.text();
+			const text = response.text;
 			
 			if (!text || text.trim().length === 0) {
 				throw new Error('No passage found for the given reference');
@@ -121,8 +125,11 @@ export class NETBibleAPIService extends BibleAPIService {
 
 	async testConnection(): Promise<boolean> {
 		try {
-			const response = await fetch(`${this.baseUrl}passage=John%203:16`);
-			return response.ok;
+			const response = await requestUrl({
+				url: `${this.baseUrl}passage=John%203:16`,
+				method: 'GET'
+			});
+			return response.status === 200;
 		} catch {
 			return false;
 		}

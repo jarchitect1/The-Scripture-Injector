@@ -55,3 +55,15 @@ export interface APIError {
 	status?: number;
 	code?: string;
 }
+
+export class BibleAPIError extends Error implements APIError {
+	status?: number;
+	code?: string;
+
+	constructor(message: string, status?: number, code?: string) {
+		super(message);
+		this.name = 'BibleAPIError';
+		this.status = status;
+		this.code = code;
+	}
+}

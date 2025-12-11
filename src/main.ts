@@ -1,5 +1,5 @@
-import { App, Plugin, PluginSettingTab, Setting, MarkdownView, Notice, SuggestModal } from 'obsidian';
-import { ScriptureInjectorSettings, BibleVerse, BibleReference } from './types/bible';
+import { App, Plugin, PluginSettingTab, Setting, MarkdownView, Notice } from 'obsidian';
+import { ScriptureInjectorSettings, BibleVerse } from './types/bible';
 import { ESVAPIService } from './api/esv-api';
 import { NETBibleAPIService } from './api/net-api';
 import { BibleReferenceParser } from './parser/reference-parser';
@@ -37,7 +37,7 @@ export default class ScriptureInjector extends Plugin {
 		// Add the main command for inserting Bible verses
 		this.addCommand({
 			id: 'insert-bible-verse',
-			name: 'Insert Bible Verse',
+			name: 'Insert bible verse',
 			editorCallback: (editor, view) => {
 				new VerseSelectionModal(this).open();
 			}
@@ -118,11 +118,13 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl('h2', {text: 'The Scripture Injector Settings'});
+		new Setting(containerEl)
+			.setName('The scripture injector settings')
+			.setHeading();
 
 		new Setting(containerEl)
-			.setName('Default Translation')
-			.setDesc('Select your preferred Bible translation')
+			.setName('Default translation')
+			.setDesc('Select your preferred bible translation')
 			.addDropdown(dropdown => dropdown
 				.addOption('ESV', 'English Standard Version')
 				.addOption('NET', 'New English Translation')
@@ -133,8 +135,8 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('ESV API Key')
-			.setDesc('API key for ESV Bible API (required for ESV translation)')
+			.setName('ESV API key')
+			.setDesc('API key for ESV bible API (required for ESV translation)')
 			.addText(text => text
 				.setPlaceholder('Enter your ESV API key')
 				.setValue(this.plugin.settings.esvApiKey)
@@ -144,7 +146,7 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('Show Translation Name')
+			.setName('Show translation name')
 			.setDesc('Include translation name in formatted verses')
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.showTranslationName)
@@ -154,8 +156,8 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('Show Reference')
-			.setDesc('Include Bible reference in formatted verses')
+			.setName('Show reference')
+			.setDesc('Include bible reference in formatted verses')
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.showReference)
 				.onChange(async (value) => {
@@ -164,7 +166,7 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('Verse Collapse')
+			.setName('Verse collapse')
 			.setDesc('Display verses in collapsible format')
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.verseCollapse)

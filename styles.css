@@ -1,0 +1,65 @@
+/* Modal styles for The Scripture Injector Plugin */
+
+.reference-input-container, 
+.translation-container, 
+.button-container {
+	margin-bottom: 20px;
+}
+
+.reference-input-container input, 
+.translation-container select {
+	width: 100%;
+	padding: 4px 6px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 14px;
+}
+
+.reference-input-container input:focus, 
+.translation-container select:focus {
+	outline: none;
+	border-color: var(--interactive-accent);
+}
+
+.button-container {
+	text-align: center;
+}
+
+.button-container button {
+	padding: 10px 20px;
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	transition: background-color 0.2s;
+}
+
+.button-container button:hover {
+	background-color: var(--interactive-accent-hover);
+}
+
+.button-container button:disabled {
+	background-color: var(--background-modifier-border);
+	color: var(--text-muted);
+	cursor: not-allowed;
+}
+
+h3 {
+	margin-bottom: 10px;
+	color: var(--text-normal);
+	font-size: 16px;
+	font-weight: 500;
+}
+
+h2 {
+	margin-bottom: 20px;
+	color: var(--text-normal);
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+}

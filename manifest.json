@@ -1,11 +1,14 @@
 {
   "id": "the-scripture-injector",
-  "name": "The Scripture Injector",
+  "name": "The scripture injector",
   "version": "1.0.1",
   "minAppVersion": "1.0.1",
-  "description": "Seamlessly integrate Bible verses into your notes with support for multiple translations.",
+  "description": "Seamlessly integrate bible verses into your notes with support for multiple translations.",
   "author": "jArchitect",
   "authorUrl": "https://jarchitect.org",
   "fundingUrl": "https://buymeacoffee.com/jarchitect",
-  "isDesktopOnly": false
+  "isDesktopOnly": false,
+  "styles": [
+    "styles.css"
+  ]
 }

@@ -112,9 +112,7 @@ export class VerseFormatter {
 
 	// Method to clean up text from APIs (remove extra whitespace, fix formatting, etc.)
 	cleanVerseText(text: string, translation?: string): string {
-		
-		const hasBracketNumbers = /\[\d+\]/.test(text);
-		
+			
 		let cleaned = text
 			// Remove extra whitespace at beginning and end
 			.trim();

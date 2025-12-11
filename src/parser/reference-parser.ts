@@ -49,7 +49,6 @@ export class BibleReferenceParser {
 		
 		// Handle chapter ranges (e.g., Genesis 1:1-2:3)
 		if (match[5] && match[6]) {
-			const endChapter = parseInt(match[5]);
 			const endVerseInChapter = parseInt(match[6]);
 			const startVerse = parseInt(match[3] || '1');
 			

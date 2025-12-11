@@ -76,7 +76,7 @@ export class ESVAPIService extends BibleAPIService {
 					text: passageText,
 					translation: 'ESV'
 				};
-			} catch (parseError) {
+			} catch (error) {
 				throw new Error('Failed to parse ESV API response');
 			}
 		} catch (error) {
@@ -106,7 +106,7 @@ export class ESVAPIService extends BibleAPIService {
 			} catch {
 				return false;
 			}
-		} catch (error) {
+		} catch {
 			return false;
 		}
 	}
