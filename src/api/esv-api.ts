@@ -19,7 +19,6 @@ export class ESVAPIService extends BibleAPIService {
 			// Use Obsidian's requestUrl to bypass CORS restrictions
 			const url = `${this.baseUrl}?q=${encodeURIComponent(reference)}`;
 
-
 			const response = await requestUrl({
 				url: url,
 				method: 'GET',
@@ -27,7 +26,6 @@ export class ESVAPIService extends BibleAPIService {
 					'Authorization': `Token ${this.apiKey}`
 				}
 			});
-
 
 			if (response.status !== 200) {
 				throw new Error(`ESV API error: ${response.status}`);
@@ -51,21 +49,23 @@ export class ESVAPIService extends BibleAPIService {
 				
 				// Apply formatting changes as requested:
 				// 1. Remove the first line (e.g., "Genesis 1:1-6")
-				// 2. Remove the last line (e.g., "(ESV)")
+				// 2. Remove "(ESV)" from the end of the text
 				// 3. Change '[' to '<sup>'
 				// 4. Change ']' to '</sup>'
 				
 				// Split into lines and process
 				const lines = passageText.split('\n');
 				
-				// Remove first line (reference) and last line (translation abbreviation)
-				if (lines.length > 2) {
+				// Remove first line (reference)
+				if (lines.length > 1) {
 					lines.shift(); // Remove first line
-					lines.pop();   // Remove last line
 				}
 				
 				// Rejoin the lines
 				passageText = lines.join('\n').trim();
+				
+				// Remove "(ESV)" from the end of the text if present
+				passageText = passageText.replace(/\(ESV\)\s*$/, '');
 				
 				// Replace square brackets with HTML sup tags
 				passageText = passageText.replace(/\[/g, '<sup>').replace(/\]/g, '</sup>');
