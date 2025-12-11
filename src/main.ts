@@ -135,10 +135,10 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('Esv api key')
-			.setDesc('Api key for esv bible (required for esv translation)')
+			.setName('ESV API key')
+			.setDesc('API key for ESV Bible (required for ESV translation)')
 			.addText(text => text
-				.setPlaceholder('Enter your esv api key')
+				.setPlaceholder('Enter your ESV API key here')
 				.setValue(this.plugin.settings.esvApiKey)
 				.onChange(async (value) => {
 					this.plugin.settings.esvApiKey = value;
