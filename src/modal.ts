@@ -35,8 +35,8 @@ export class VerseSelectionModal extends Modal {
 		translationContainer.createEl('h3', { text: 'Select translation' });
 		
 		this.translationSelect = translationContainer.createEl('select');
-		this.translationSelect.createEl('option', { value: 'esv', text: 'english standard version' });
-		this.translationSelect.createEl('option', { value: 'net', text: 'new english translation' });
+		this.translationSelect.createEl('option', { value: 'esv', text: 'English standard version' });
+		this.translationSelect.createEl('option', { value: 'net', text: 'New english translation' });
 		
 		this.translationSelect.value = this.plugin.settings.defaultTranslation;
 		
