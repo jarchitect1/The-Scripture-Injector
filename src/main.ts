@@ -7,7 +7,7 @@ import { VerseFormatter } from './formatter/verse-formatter';
 import { VerseSelectionModal } from './modal';
 
 const DEFAULT_SETTINGS: ScriptureInjectorSettings = {
-	defaultTranslation: 'ESV',
+	defaultTranslation: 'NET',
 	esvApiKey: '',
 	showTranslationName: true,
 	showReference: true,
