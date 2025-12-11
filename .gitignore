@@ -43,6 +43,7 @@ Thumbs.db
 # Logs
 logs
 *.log
+Init Prompt.txt
 
 # Runtime data
 pids
