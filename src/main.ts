@@ -100,7 +100,7 @@ export default class ScriptureInjector extends Plugin {
 			editor.replaceRange(formattedVerse, cursor);
 			new Notice(`Inserted: ${verse.reference}`);
 		} else {
-			new Notice('No active markdown editor found');
+			new Notice('No active note found');
 		}
 	}
 }
@@ -119,15 +119,15 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('The scripture injector settings')
+			.setName('Preference')
 			.setHeading();
 
 		new Setting(containerEl)
 			.setName('Default translation')
 			.setDesc('Select your preferred bible translation')
 			.addDropdown(dropdown => dropdown
-				.addOption('ESV', 'English Standard Version')
-				.addOption('NET', 'New English Translation')
+				.addOption('ESV', 'English standard version')
+				.addOption('NET', 'New english translation')
 				.setValue(this.plugin.settings.defaultTranslation)
 				.onChange(async (value: string) => {
 					this.plugin.settings.defaultTranslation = value as 'ESV' | 'NET';
@@ -135,10 +135,10 @@ class ScriptureInjectorSettingTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName('ESV API key')
-			.setDesc('API key for ESV bible API (required for ESV translation)')
+			.setName('ESV api key')
+			.setDesc('Api key for esv bible (required for esv translation)')
 			.addText(text => text
-				.setPlaceholder('Enter your ESV API key')
+				.setPlaceholder('Enter your esv api key')
 				.setValue(this.plugin.settings.esvApiKey)
 				.onChange(async (value) => {
 					this.plugin.settings.esvApiKey = value;

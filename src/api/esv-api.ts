@@ -77,7 +77,8 @@ export class ESVAPIService extends BibleAPIService {
 					translation: 'ESV'
 				};
 			} catch (error) {
-				throw new Error('Failed to parse ESV API response');
+				const errorMessage = error instanceof Error ? error.message : String(error);
+				throw new Error(`Failed to parse ESV API response: ${errorMessage}`);
 			}
 		} catch (error) {
 			this.handleError(error, 'ESV API');
